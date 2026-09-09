@@ -1,5 +1,6 @@
 # Marcenaria Juá
 
+
 Aplicativo mobile para controlar materiais, estoque, fornecedores e valores de uma marcenaria. Construído com React Native, Expo, TypeScript e Supabase.
 
 ## Funcionalidades
