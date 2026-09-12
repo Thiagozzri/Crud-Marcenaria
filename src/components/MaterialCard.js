@@ -1,25 +1,16 @@
-import { Ionicons } from '@expo/vector-icons';
-import { Pressable, StyleSheet, Text, View } from 'react-native';
-
-import { colors, radius } from '../theme';
-import type { Material } from '../types/material';
+import { Ionicons } from "@expo/vector-icons";
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { colors, radius } from "../theme";
 import {
   formatCurrency,
   formatQuantity,
   getEstoqueStatus,
   getValorTotal,
-} from '../utils/material';
-import { StatusBadge } from './StatusBadge';
-
-interface MaterialCardProps {
-  material: Material;
-  onPress: () => void;
-}
-
-export function MaterialCard({ material, onPress }: MaterialCardProps) {
+} from "../utils/material";
+import { StatusBadge } from "./StatusBadge";
+export function MaterialCard({ material, onPress }) {
   const status = getEstoqueStatus(material.estoque, material.estoque_minimo);
-  const isCritical = status !== 'Disponível';
-
+  const isCritical = status !== "Disponível";
   return (
     <Pressable
       accessibilityHint="Abre os detalhes do material"
@@ -67,7 +58,9 @@ export function MaterialCard({ material, onPress }: MaterialCardProps) {
           </View>
           <View style={styles.rightValue}>
             <Text style={styles.label}>Valor armazenado</Text>
-            <Text style={styles.total}>{formatCurrency(getValorTotal(material))}</Text>
+            <Text style={styles.total}>
+              {formatCurrency(getValorTotal(material))}
+            </Text>
           </View>
         </View>
         <Text style={styles.unitPrice}>
@@ -77,14 +70,13 @@ export function MaterialCard({ material, onPress }: MaterialCardProps) {
     </Pressable>
   );
 }
-
 const styles = StyleSheet.create({
   card: {
     backgroundColor: colors.surface,
     borderColor: colors.border,
     borderRadius: radius.medium,
     borderWidth: 1,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 12,
     marginHorizontal: 20,
     marginVertical: 6,
@@ -96,18 +88,18 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   criticalCard: {
-    borderColor: '#E8C89D',
+    borderColor: "#E8C89D",
   },
   pressed: {
     opacity: 0.78,
     transform: [{ scale: 0.99 }],
   },
   iconWrap: {
-    alignItems: 'center',
+    alignItems: "center",
     backgroundColor: colors.primarySoft,
     borderRadius: 12,
     height: 44,
-    justifyContent: 'center',
+    justifyContent: "center",
     width: 44,
   },
   criticalIcon: {
@@ -117,8 +109,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   topRow: {
-    alignItems: 'center',
-    flexDirection: 'row',
+    alignItems: "center",
+    flexDirection: "row",
   },
   titleWrap: {
     flex: 1,
@@ -126,7 +118,7 @@ const styles = StyleSheet.create({
   title: {
     color: colors.text,
     fontSize: 17,
-    fontWeight: '800',
+    fontWeight: "800",
   },
   category: {
     color: colors.textMuted,
@@ -142,33 +134,33 @@ const styles = StyleSheet.create({
     marginVertical: 13,
   },
   valuesRow: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    justifyContent: "space-between",
   },
   rightValue: {
-    alignItems: 'flex-end',
+    alignItems: "flex-end",
   },
   label: {
     color: colors.textMuted,
     fontSize: 11,
-    fontWeight: '600',
+    fontWeight: "600",
     marginBottom: 3,
-    textTransform: 'uppercase',
+    textTransform: "uppercase",
   },
   value: {
     color: colors.text,
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: "700",
   },
   total: {
     color: colors.primary,
     fontSize: 15,
-    fontWeight: '800',
+    fontWeight: "800",
   },
   unitPrice: {
     color: colors.textMuted,
     fontSize: 12,
     marginTop: 7,
-    textAlign: 'right',
+    textAlign: "right",
   },
 });

@@ -1,14 +1,13 @@
 {
   "name": "marcenaria-jua",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "index.js",
   "private": true,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "test:watch": "vitest"
   },
@@ -27,8 +26,6 @@
     "react-native-web": "^0.21.2"
   },
   "devDependencies": {
-    "@types/react": "~19.2.2",
-    "typescript": "~6.0.3",
     "vitest": "^5.0.0"
   }
 }

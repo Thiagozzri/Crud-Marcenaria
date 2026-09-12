@@ -1,19 +1,12 @@
-import { StyleSheet, Text, View } from 'react-native';
-
-import { colors } from '../theme';
-import type { EstoqueStatus } from '../types/material';
-
-interface StatusBadgeProps {
-  status: EstoqueStatus;
-}
-
-const statusColors: Record<EstoqueStatus, { background: string; text: string; dot: string }> = {
-  'Sem estoque': {
+import { StyleSheet, Text, View } from "react-native";
+import { colors } from "../theme";
+const statusColors = {
+  "Sem estoque": {
     background: colors.dangerSoft,
     text: colors.danger,
     dot: colors.danger,
   },
-  'Estoque baixo': {
+  "Estoque baixo": {
     background: colors.warningSoft,
     text: colors.warning,
     dot: colors.warning,
@@ -24,10 +17,8 @@ const statusColors: Record<EstoqueStatus, { background: string; text: string; do
     dot: colors.success,
   },
 };
-
-export function StatusBadge({ status }: StatusBadgeProps) {
+export function StatusBadge({ status }) {
   const palette = statusColors[status];
-
   return (
     <View style={[styles.badge, { backgroundColor: palette.background }]}>
       <View style={[styles.dot, { backgroundColor: palette.dot }]} />
@@ -35,13 +26,12 @@ export function StatusBadge({ status }: StatusBadgeProps) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   badge: {
-    alignItems: 'center',
-    alignSelf: 'flex-start',
+    alignItems: "center",
+    alignSelf: "flex-start",
     borderRadius: 999,
-    flexDirection: 'row',
+    flexDirection: "row",
     gap: 6,
     paddingHorizontal: 10,
     paddingVertical: 6,
@@ -53,6 +43,6 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 12,
-    fontWeight: '700',
+    fontWeight: "700",
   },
 });
