@@ -4,8 +4,16 @@ const TABLE = "materiais_marcenaria";
 const throwIfError = (error) => {
   if (error) throw new Error(error.message);
 };
+const getSupabase = () => {
+  if (!supabase) {
+    throw new Error(
+      "Supabase não configurado. Informe a URL e a chave pública em src/config.js.",
+    );
+  }
+  return supabase;
+};
 export const listarMateriais = async () => {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from(TABLE)
     .select("*")
     .order("atualizado_em", { ascending: false });
@@ -14,7 +22,7 @@ export const listarMateriais = async () => {
 };
 export const cadastrarMaterial = async (input) => {
   const now = new Date().toISOString();
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from(TABLE)
     .insert([{ ...input, criado_em: now, atualizado_em: now }])
     .select()
@@ -24,7 +32,7 @@ export const cadastrarMaterial = async (input) => {
   return normalizeMaterial(data);
 };
 export const editarMaterial = async (id, input) => {
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from(TABLE)
     .update({ ...input, atualizado_em: new Date().toISOString() })
     .eq("id", id)
@@ -35,6 +43,6 @@ export const editarMaterial = async (id, input) => {
   return normalizeMaterial(data);
 };
 export const excluirMaterial = async (id) => {
-  const { error } = await supabase.from(TABLE).delete().eq("id", id);
+  const { error } = await getSupabase().from(TABLE).delete().eq("id", id);
   throwIfError(error);
 };

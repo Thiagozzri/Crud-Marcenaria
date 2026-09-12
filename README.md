@@ -6,14 +6,16 @@ Aplicativo em JavaScript para controlar materiais, estoque, fornecedores e valor
 
 1. Crie um projeto vazio em [snack.expo.dev](https://snack.expo.dev/).
 2. Use o SDK 57 e copie para o Snack o `App.js` e a pasta `src` deste projeto.
-3. No painel de dependências do Snack, adicione:
+3. No painel **Dependencies** do Snack, clique em **Add dependency** e adicione uma por uma nas versões abaixo. Copiar somente os arquivos de código não cadastra esses pacotes no Snack:
 
-   - `@expo/vector-icons`
-   - `@react-native-async-storage/async-storage`
-   - `@supabase/supabase-js`
-   - `expo-status-bar`
-   - `react-native-safe-area-context`
-   - `react-native-url-polyfill`
+   - `@expo/vector-icons@15.0.2`
+   - `@react-native-async-storage/async-storage@2.2.0`
+   - `@supabase/supabase-js@2.116.0`
+   - `expo-status-bar@57.0.1`
+   - `react-native-safe-area-context@5.7.0`
+   - `react-native-url-polyfill@4.0.0`
+
+   Não adicione `react-native-url-polyfill/auto.js`: esse é um caminho interno, não o nome de uma dependência.
 
 4. Abra `src/config.js` e informe a URL e a chave pública do Supabase:
 
